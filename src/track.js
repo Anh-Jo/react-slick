@@ -187,6 +187,9 @@ const renderSlides = spec => {
 };
 
 export class Track extends React.PureComponent {
+  node = null;
+
+  handleRef = ref => { this.node = ref };
   render() {
     const slides = renderSlides(this.props);
     const { onMouseEnter, onMouseOver, onMouseLeave } = this.props;
@@ -194,6 +197,7 @@ export class Track extends React.PureComponent {
     return (
       <div
         className="slick-track"
+        ref={this.handleRef}
         style={this.props.trackStyle}
         {...mouseEvents}
       >
